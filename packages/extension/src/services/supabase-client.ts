@@ -44,8 +44,8 @@ class ChromeStorageAdapter implements StorageAdapter {
 }
 
 // These will be configured via environment variables or extension options
-const SUPABASE_URL = process.env.VITE_SUPABASE_URL || 'https://your-project.supabase.co'
-const SUPABASE_ANON_KEY = process.env.VITE_SUPABASE_ANON_KEY || 'your-anon-key'
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || 'https://your-project.supabase.co'
+const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY || 'your-anon-key'
 
 // Create Supabase client with Chrome storage adapter for session persistence
 export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {

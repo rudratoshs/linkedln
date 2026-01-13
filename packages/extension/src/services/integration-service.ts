@@ -6,8 +6,8 @@
 import { createClient, SupabaseClient } from '@supabase/supabase-js'
 
 // Environment variables with fallbacks
-const SUPABASE_URL = 'https://livddfovoslptifnbfek.supabase.co'
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxpdmRkZm92b3NscHRpZm5iZmVrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjgyMjY2NDMsImV4cCI6MjA4MzgwMjY0M30.MgmaDCjksLVCDRbKoj2Id-mrBo0aI6_UN-cNlTCivO8'
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL
+const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY
 
 // Simple Chrome Storage Adapter
 class ChromeStorageAdapter {

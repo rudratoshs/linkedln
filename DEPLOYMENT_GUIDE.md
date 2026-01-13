@@ -32,7 +32,7 @@ npx supabase login
 
 # Deploy functions
 cd packages/edge-functions
-npx supabase functions deploy --project-ref livddfovoslptifnbfek
+npx supabase functions deploy --project-ref YOUR_PROJECT_REF
 ```
 
 ### Step 3: Test PostPhantom
@@ -103,16 +103,16 @@ All configuration is already set up in the `.env` files:
 
 #### Extension Config (`packages/extension/.env`)
 ```
-VITE_SUPABASE_URL=https://livddfovoslptifnbfek.supabase.co
-VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_ANON_KEY=your_anon_key_here
 ```
 
 #### Backend Config (`packages/edge-functions/.env`)
 ```
-SUPABASE_URL=https://livddfovoslptifnbfek.supabase.co
-SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
-OPENAI_API_KEY=sk-proj-A4FcDyQhD6s9PTs2iitT5wbwX1ZHfZ4H_8ZAznsZSn9...
-GEMINI_API_KEY=AIzaSyCQU_Gfu0TacaQvXEG_N8gn9gY1K22uSUY
+SUPABASE_URL=https://your-project.supabase.co
+SUPABASE_SERVICE_ROLE_KEY=your_service_role_key_here
+OPENAI_API_KEY=sk-proj-your_openai_key_here
+GEMINI_API_KEY=your_gemini_api_key_here
 ```
 
 ### Database Schema

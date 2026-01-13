@@ -16,6 +16,9 @@ export default defineConfig({
     name: 'PostPhantom',
     description: 'AI-powered LinkedIn content assistance with human-in-the-loop governance',
     version: '1.0.0',
+    action: {
+      default_title: "PostPhantom - AI LinkedIn Assistant"
+    },
     permissions: [
       'activeTab',
       'storage',
