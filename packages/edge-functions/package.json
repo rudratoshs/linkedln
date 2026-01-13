@@ -1,0 +1,14 @@
+{
+  "name": "@postphantom/edge-functions",
+  "version": "1.0.0",
+  "description": "PostPhantom Supabase Edge Functions",
+  "type": "module",
+  "scripts": {
+    "dev": "supabase functions serve",
+    "deploy": "supabase functions deploy",
+    "type-check": "deno check **/*.ts"
+  },
+  "dependencies": {
+    "@postphantom/shared": "workspace:*"
+  }
+}
