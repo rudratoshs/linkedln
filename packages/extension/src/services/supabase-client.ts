@@ -13,6 +13,12 @@ class ChromeStorageAdapter implements StorageAdapter {
 
   async getItem(key: string): Promise<string | null> {
     try {
+      // Check if chrome extension context is still valid
+      if (!chrome?.storage?.local) {
+        console.warn('ChromeStorageAdapter: Extension context invalidated')
+        return null
+      }
+      
       const prefixedKey = this.keyPrefix + key
       const result = await chrome.storage.local.get([prefixedKey])
       return result[prefixedKey] || null
@@ -24,21 +30,33 @@ class ChromeStorageAdapter implements StorageAdapter {
 
   async setItem(key: string, value: string): Promise<void> {
     try {
+      // Check if chrome extension context is still valid
+      if (!chrome?.storage?.local) {
+        console.warn('ChromeStorageAdapter: Extension context invalidated, cannot set item')
+        return
+      }
+      
       const prefixedKey = this.keyPrefix + key
       await chrome.storage.local.set({ [prefixedKey]: value })
     } catch (error) {
       console.error('ChromeStorageAdapter: Failed to set item', { key, error })
-      throw error
+      // Don't throw error to prevent breaking the app
     }
   }
 
   async removeItem(key: string): Promise<void> {
     try {
+      // Check if chrome extension context is still valid
+      if (!chrome?.storage?.local) {
+        console.warn('ChromeStorageAdapter: Extension context invalidated, cannot remove item')
+        return
+      }
+      
       const prefixedKey = this.keyPrefix + key
       await chrome.storage.local.remove([prefixedKey])
     } catch (error) {
       console.error('ChromeStorageAdapter: Failed to remove item', { key, error })
-      throw error
+      // Don't throw error to prevent breaking the app
     }
   }
 }
