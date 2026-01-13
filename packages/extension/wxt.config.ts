@@ -17,7 +17,8 @@ export default defineConfig({
     description: 'AI-powered LinkedIn content assistance with human-in-the-loop governance',
     version: '1.0.0',
     action: {
-      default_title: "PostPhantom - AI LinkedIn Assistant"
+      default_title: "PostPhantom - AI LinkedIn Assistant",
+      default_popup: "popup.html"
     },
     permissions: [
       'activeTab',

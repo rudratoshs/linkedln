@@ -1,6 +1,6 @@
 import React from 'react'
 import { createRoot, Root } from 'react-dom/client'
-import { PostPhantomApp } from '../components/PostPhantomApp'
+import { PostPhantomApp } from '../components/PostPhantomAppSimple'
 
 export interface ShadowDOMInjectionOptions {
   targetElement: HTMLElement
