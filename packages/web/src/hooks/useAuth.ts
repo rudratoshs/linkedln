@@ -19,13 +19,15 @@ export function useAuth() {
     return unsubscribe
   }, [])
 
+  const isAuthenticated = authState.user !== null && authState.session !== null
+
   return {
     ...authState,
     signIn: authService.signInWithPassword.bind(authService),
     signUp: authService.signUp.bind(authService),
     signOut: authService.signOut.bind(authService),
     refreshSession: authService.refreshSession.bind(authService),
-    isAuthenticated: authService.isAuthenticated.bind(authService),
+    isAuthenticated,
     getUserId: authService.getUserId.bind(authService),
     isSessionValid: authService.isSessionValid.bind(authService),
     getSupabaseClient: authService.getSupabaseClient.bind(authService),

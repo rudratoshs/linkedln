@@ -5,7 +5,7 @@
 
 import { useState, useEffect } from 'react'
 import { databaseService } from '@/lib/database'
-import type { VoicePersona, RequestLog, UserPreferences, UsageAnalytics, RateLimit } from '@/lib/database'
+import type { VoicePersona, UserPreferences } from '@/lib/database'
 
 // Generic hook for async data fetching
 function useAsyncData<T>(
@@ -16,10 +16,23 @@ function useAsyncData<T>(
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
+  const fetchData = async () => {
+    try {
+      setLoading(true)
+      setError(null)
+      const result = await fetchFn()
+      setData(result)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'An error occurred')
+    } finally {
+      setLoading(false)
+    }
+  }
+
   useEffect(() => {
     let cancelled = false
 
-    const fetchData = async () => {
+    const runFetch = async () => {
       try {
         setLoading(true)
         setError(null)
@@ -38,14 +51,14 @@ function useAsyncData<T>(
       }
     }
 
-    fetchData()
+    runFetch()
 
     return () => {
       cancelled = true
     }
   }, deps)
 
-  return { data, loading, error, refetch: () => fetchData() }
+  return { data, loading, error, refetch: fetchData }
 }
 
 // Voice Personas hooks
@@ -167,4 +180,35 @@ export function useUsageAnalytics(period: 'daily' | 'weekly' | 'monthly' = 'dail
 // Dashboard stats hook
 export function useDashboardStats() {
   return useAsyncData(() => databaseService.getDashboardStats())
+}
+
+// Subscription and billing hooks
+export function useSubscriptionPlan() {
+  return useAsyncData(() => databaseService.getSubscriptionPlan())
+}
+
+export function useUpdateSubscriptionPlan() {
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+
+  const updatePlan = async (plan: Partial<any>) => {
+    try {
+      setLoading(true)
+      setError(null)
+      const result = await databaseService.updateSubscriptionPlan(plan)
+      return result
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'Failed to update subscription plan'
+      setError(errorMessage)
+      throw err
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  return { updatePlan, loading, error }
+}
+
+export function useBillingGuard() {
+  return useAsyncData(() => databaseService.getBillingGuard())
 }

@@ -7,6 +7,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { Layout } from '@/components/Layout'
 import { AuthPage } from '@/pages/AuthPage'
+import { SetupPage } from '@/pages/SetupPage'
 import { DashboardPage } from '@/pages/DashboardPage'
 import { VoiceVaultPage } from '@/pages/VoiceVaultPage'
 import { HistoryPage } from '@/pages/HistoryPage'
@@ -32,6 +33,7 @@ function App() {
   }
 
   // If authenticated, show main app with routing
+  // The database error checking will happen inside individual components
   return (
     <Layout>
       <Routes>
@@ -41,6 +43,7 @@ function App() {
         <Route path="/history" element={<HistoryPage />} />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/pricing" element={<PricingPage />} />
+        <Route path="/setup" element={<SetupPage />} />
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Routes>
     </Layout>

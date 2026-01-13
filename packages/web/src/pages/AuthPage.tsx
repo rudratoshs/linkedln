@@ -102,6 +102,12 @@ export function AuthPage() {
               By signing up, you agree to our Terms of Service and Privacy Policy.
             </div>
           )}
+
+          <div className="mt-4 p-3 bg-blue-50 rounded text-xs text-blue-700">
+            <strong>Demo credentials:</strong><br />
+            Email: demo@postphantom.com<br />
+            Password: demopassword123
+          </div>
         </CardContent>
       </Card>
     </div>

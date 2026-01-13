@@ -73,6 +73,27 @@ export interface RateLimit {
   lock_reason?: string
 }
 
+export interface SubscriptionPlan {
+  user_id: string
+  plan_type: 'free' | 'pro' | 'enterprise'
+  daily_generation_limit: number
+  monthly_generation_limit: number
+  features_enabled: Record<string, any>
+  plan_expires_at?: string
+  created_at: string
+  updated_at: string
+}
+
+export interface BillingGuard {
+  user_id: string
+  monthly_spend_limit: number
+  current_month_spend: number
+  spend_reset_at: string
+  overage_protection: boolean
+  overage_threshold: number
+  last_billing_check: string
+}
+
 /**
  * Database service class providing typed access to PostPhantom data
  */
@@ -92,6 +113,9 @@ export class DatabaseService {
       .order('created_at', { ascending: false })
 
     if (error) {
+      if (error.message.includes('Could not find the table') || error.code === 'PGRST106') {
+        throw new Error('Database tables not found. Please run the database migrations first.')
+      }
       throw new Error(`Failed to fetch voice personas: ${error.message}`)
     }
 
@@ -216,8 +240,47 @@ export class DatabaseService {
       .eq('user_id', userId)
       .single()
 
-    if (error && error.code !== 'PGRST116') { // PGRST116 = no rows returned
+    if (error) {
+      if (error.code === 'PGRST116') { // No rows returned
+        // Create default preferences for new user
+        return await this.createDefaultUserPreferences(userId)
+      }
       throw new Error(`Failed to fetch user preferences: ${error.message}`)
+    }
+
+    return data
+  }
+
+  private async createDefaultUserPreferences(userId: string): Promise<UserPreferences> {
+    const defaultPreferences = {
+      user_id: userId,
+      preferred_provider: 'openai' as const,
+      generation_temperature: 0.7,
+      max_drafts_per_request: 3,
+      anti_cheerleader_enabled: true,
+      typing_speed_multiplier: 1.0,
+      preferences: {}
+    }
+
+    const { data, error } = await this.supabase
+      .from('user_preferences')
+      .insert(defaultPreferences)
+      .select()
+      .single()
+
+    if (error) {
+      // If insert fails, try to get existing row (race condition)
+      const { data: existingData, error: selectError } = await this.supabase
+        .from('user_preferences')
+        .select('*')
+        .eq('user_id', userId)
+        .single()
+
+      if (selectError) {
+        throw new Error(`Failed to create or fetch user preferences: ${error.message}`)
+      }
+
+      return existingData
     }
 
     return data
@@ -258,8 +321,54 @@ export class DatabaseService {
       .eq('user_id', userId)
       .single()
 
-    if (error && error.code !== 'PGRST116') { // PGRST116 = no rows returned
+    if (error) {
+      if (error.code === 'PGRST116') { // No rows returned
+        // Create default rate limit row for new user
+        return await this.createDefaultRateLimit(userId)
+      }
       throw new Error(`Failed to fetch rate limit: ${error.message}`)
+    }
+
+    return data
+  }
+
+  private async createDefaultRateLimit(userId: string): Promise<RateLimit> {
+    const now = new Date()
+    const dailyReset = new Date(now)
+    dailyReset.setDate(dailyReset.getDate() + 1)
+    dailyReset.setHours(0, 0, 0, 0)
+    
+    const hourlyReset = new Date(now)
+    hourlyReset.setHours(hourlyReset.getHours() + 1, 0, 0, 0)
+
+    const defaultRateLimit = {
+      user_id: userId,
+      daily_count: 0,
+      hourly_count: 0,
+      daily_reset_at: dailyReset.toISOString(),
+      hourly_reset_at: hourlyReset.toISOString(),
+      is_locked: false
+    }
+
+    const { data, error } = await this.supabase
+      .from('rate_limits')
+      .insert(defaultRateLimit)
+      .select()
+      .single()
+
+    if (error) {
+      // If insert fails, try to get existing row (race condition)
+      const { data: existingData, error: selectError } = await this.supabase
+        .from('rate_limits')
+        .select('*')
+        .eq('user_id', userId)
+        .single()
+
+      if (selectError) {
+        throw new Error(`Failed to create or fetch rate limit: ${error.message}`)
+      }
+
+      return existingData
     }
 
     return data
@@ -294,10 +403,14 @@ export class DatabaseService {
       throw new Error('User not authenticated')
     }
 
-    // Get rate limit info
-    const rateLimit = await this.getRateLimit()
+    // Get rate limit info and subscription plan in parallel
+    const [rateLimit, subscriptionPlan] = await Promise.all([
+      this.getRateLimit(),
+      this.getSubscriptionPlan()
+    ])
+
     const dailyGenerations = rateLimit?.daily_count || 0
-    const dailyLimit = 50 // Default limit, could be fetched from subscription_plans
+    const dailyLimit = subscriptionPlan?.daily_generation_limit || 50
 
     // Get active personas count
     const { count: activePersonas } = await this.supabase
@@ -325,6 +438,126 @@ export class DatabaseService {
       totalRequests: totalRequests || 0,
       providerHealth
     }
+  }
+
+  // Subscription and billing methods
+  async getSubscriptionPlan(): Promise<SubscriptionPlan | null> {
+    const userId = authService.getUserId()
+    if (!userId) {
+      throw new Error('User not authenticated')
+    }
+
+    const { data, error } = await this.supabase
+      .from('subscription_plans')
+      .select('*')
+      .eq('user_id', userId)
+      .single()
+
+    if (error) {
+      if (error.code === 'PGRST116') { // No rows returned
+        // Create default subscription plan for new user
+        return await this.createDefaultSubscriptionPlan(userId)
+      }
+      throw new Error(`Failed to fetch subscription plan: ${error.message}`)
+    }
+
+    return data
+  }
+
+  private async createDefaultSubscriptionPlan(userId: string): Promise<SubscriptionPlan> {
+    const defaultPlan = {
+      user_id: userId,
+      plan_type: 'free' as const,
+      daily_generation_limit: 50,
+      monthly_generation_limit: 1500,
+      features_enabled: {}
+    }
+
+    const { data, error } = await this.supabase
+      .from('subscription_plans')
+      .insert(defaultPlan)
+      .select()
+      .single()
+
+    if (error) {
+      // If insert fails, try to get existing row (race condition)
+      const { data: existingData, error: selectError } = await this.supabase
+        .from('subscription_plans')
+        .select('*')
+        .eq('user_id', userId)
+        .single()
+
+      if (selectError) {
+        throw new Error(`Failed to create or fetch subscription plan: ${error.message}`)
+      }
+
+      return existingData
+    }
+
+    return data
+  }
+
+  async updateSubscriptionPlan(plan: Partial<SubscriptionPlan>): Promise<SubscriptionPlan> {
+    const userId = authService.getUserId()
+    if (!userId) {
+      throw new Error('User not authenticated')
+    }
+
+    const { data, error } = await this.supabase
+      .from('subscription_plans')
+      .upsert({
+        user_id: userId,
+        ...plan
+      })
+      .select()
+      .single()
+
+    if (error) {
+      throw new Error(`Failed to update subscription plan: ${error.message}`)
+    }
+
+    return data
+  }
+
+  async getBillingGuard(): Promise<BillingGuard | null> {
+    const userId = authService.getUserId()
+    if (!userId) {
+      throw new Error('User not authenticated')
+    }
+
+    const { data, error } = await this.supabase
+      .from('billing_guards')
+      .select('*')
+      .eq('user_id', userId)
+      .single()
+
+    if (error && error.code !== 'PGRST116') { // PGRST116 = no rows returned
+      throw new Error(`Failed to fetch billing guard: ${error.message}`)
+    }
+
+    return data
+  }
+
+  async updateBillingGuard(guard: Partial<BillingGuard>): Promise<BillingGuard> {
+    const userId = authService.getUserId()
+    if (!userId) {
+      throw new Error('User not authenticated')
+    }
+
+    const { data, error } = await this.supabase
+      .from('billing_guards')
+      .upsert({
+        user_id: userId,
+        ...guard
+      })
+      .select()
+      .single()
+
+    if (error) {
+      throw new Error(`Failed to update billing guard: ${error.message}`)
+    }
+
+    return data
   }
 }
 
