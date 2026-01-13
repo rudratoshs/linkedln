@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PostPhantom | CRM Mobile View</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4848e5",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111121",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bottom-sheet-shadow {
+            box-shadow: 0 -10px 25px -5px rgba(0, 0, 0, 0.1), 0 -8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-900 dark:text-gray-100 antialiased">
+<!-- Mobile View Container -->
+<div class="relative mx-auto max-w-[480px] min-h-screen bg-background-light dark:bg-background-dark flex flex-col border-x border-gray-200 dark:border-gray-800">
+<!-- Sticky Header & Search -->
+<header class="sticky top-0 z-30 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+<div class="flex items-center justify-between px-4 py-3">
+<div class="flex items-center gap-3">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined !text-xl">insights</span>
+</div>
+<h1 class="text-lg font-bold tracking-tight">PostPhantom CRM</h1>
+</div>
+<button class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">
+<span class="material-symbols-outlined">sync</span>
+</button>
+</div>
+<!-- Search & Filters -->
+<div class="px-4 pb-4 space-y-3">
+<div class="flex gap-2">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">search</span>
+<input class="w-full bg-white dark:bg-gray-900 border-none rounded-lg pl-10 pr-4 h-11 text-sm focus:ring-2 focus:ring-primary/50 shadow-sm" placeholder="Search contacts..." type="text"/>
+</div>
+<button class="bg-white dark:bg-gray-900 p-2.5 rounded-lg border-none flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-gray-600 dark:text-gray-400">tune</span>
+</button>
+</div>
+<!-- Chips -->
+<div class="flex gap-2 overflow-x-auto pb-1 no-scrollbar">
+<button class="flex items-center gap-1.5 h-8 px-3 rounded-full bg-primary text-white text-xs font-semibold whitespace-nowrap">
+                        All
+                    </button>
+<button class="flex items-center gap-1.5 h-8 px-3 rounded-full bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-800 text-xs font-medium whitespace-nowrap">
+                        Positive <span class="material-symbols-outlined !text-sm">expand_more</span>
+</button>
+<button class="flex items-center gap-1.5 h-8 px-3 rounded-full bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-800 text-xs font-medium whitespace-nowrap">
+                        Needs Follow-up <span class="material-symbols-outlined !text-sm">expand_more</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Contact List -->
+<main class="flex-1 overflow-y-auto px-4 py-4 space-y-3">
+<!-- Contact Card 1 -->
+<div class="bg-white dark:bg-gray-900 p-4 rounded-lg border border-gray-100 dark:border-gray-800 shadow-sm flex items-center justify-between cursor-pointer active:scale-[0.98] transition-transform">
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="w-12 h-12 rounded-full bg-center bg-cover border-2 border-white dark:border-gray-800 shadow-sm" data-alt="Portrait of a smiling professional woman" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDKj7EQT-Yw1YEzS2xgpG2hTwlvKfcfszPlgM21PiY1lCfMkdpze_wNZ_jYD7L9Ad_u-szPtTOwNW7FXgnsolf8o7TQyrGGQf8YvhuvQeIdpKTHkrfREOgO3XEetmk9i48JRCz07mcD3VLqiXSqd0X9szphewa7OLk7DG9nDw3cuau0kDMGmNAT59xI4DrRyi1rT2jl1oYe15lVZYAxqfqh6bn7NITvjGqSVtXB05zxNTFg1OHr4prpG34XKCQ84se6ltaPwxC5F-Rb");'></div>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white dark:border-gray-900 rounded-full"></div>
+</div>
+<div>
+<h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100">Sarah Jenkins</h3>
+<p class="text-[11px] text-gray-500 dark:text-gray-400">Last interaction: 2 days ago</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="px-2 py-0.5 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-[10px] font-bold uppercase tracking-wider">Positive</span>
+<span class="material-symbols-outlined text-gray-300">chevron_right</span>
+</div>
+</div>
+<!-- Contact Card 2 -->
+<div class="bg-white dark:bg-gray-900 p-4 rounded-lg border border-gray-100 dark:border-gray-800 shadow-sm flex items-center justify-between cursor-pointer active:scale-[0.98] transition-transform">
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="w-12 h-12 rounded-full bg-center bg-cover border-2 border-white dark:border-gray-800 shadow-sm" data-alt="Close up of a man with glasses" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAAtinbzGgLuhcdsAW6NWEgWRJTnPy93VshhnX3xeVYGKpw2rsIe_ZItMO7ZwoY9HwtvCh_LOPaDdY5hf7FCGPwDVTc4yD4z-fGDt0vlth3coat40R5HFXtqUR5Dz7zglCMpvCymoI8SYBi6e-zjUPtd8uHBJeMFHsipXY3mvlu4ioRuxXcc15K0bN6PqU5ZUpVdHop1v75S38zpvZf1ltKBeNc6py7dTPfVi1OWf-75YIyZ0QoPzpaDfqD3fXYAisbeJ5K_84XYbHx");'></div>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-gray-300 border-2 border-white dark:border-gray-900 rounded-full"></div>
+</div>
+<div>
+<h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100">Arjun Sharma</h3>
+<p class="text-[11px] text-gray-500 dark:text-gray-400">Last interaction: 5 days ago</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 text-[10px] font-bold uppercase tracking-wider">Follow-up</span>
+<span class="material-symbols-outlined text-gray-300">chevron_right</span>
+</div>
+</div>
+<!-- Contact Card 3 -->
+<div class="bg-white dark:bg-gray-900 p-4 rounded-lg border border-gray-100 dark:border-gray-800 shadow-sm flex items-center justify-between cursor-pointer active:scale-[0.98] transition-transform">
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="w-12 h-12 rounded-full bg-center bg-cover border-2 border-white dark:border-gray-800 shadow-sm" data-alt="Business man in a blue suit" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCLJoa3L5S4l_Hrp2eoY5bze5TulrAD6ZCyvXPR6N6JA5JwJb7YXuTUgo3i-bz3LVfU9hiGNpNyDqLxGoQEHAfDGtXNZV4neBzAV1rMrhA6QBIjNZqcTLKl0oCZzMiO0_m7w4ALbz8bH_WS-opBuQf-vOWsF6-idw3J_4D8nIEzIVWWZnu8KrvFFLqu-aSIlMlew2Z2aWkhMiOihS9yy76EXdJkbDEshhBoI7GBB4uXjAQPji5CJn5OzDuLzFjeSmwjYrFL_S9vT4mr");'></div>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white dark:border-gray-900 rounded-full"></div>
+</div>
+<div>
+<h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100">Michael Chen</h3>
+<p class="text-[11px] text-gray-500 dark:text-gray-400">Last interaction: 1 hour ago</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-[10px] font-bold uppercase tracking-wider">Active</span>
+<span class="material-symbols-outlined text-gray-300">chevron_right</span>
+</div>
+</div>
+<!-- Contact Card 4 -->
+<div class="bg-white dark:bg-gray-900 p-4 rounded-lg border border-gray-100 dark:border-gray-800 shadow-sm flex items-center justify-between cursor-pointer active:scale-[0.98] transition-transform">
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="w-12 h-12 rounded-full bg-center bg-cover border-2 border-white dark:border-gray-800 shadow-sm" data-alt="Modern professional woman looking at camera" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAnu3lYJlspRxpy-axYZyEGXUc1flv46CUp9hMhun7UHghfa-4VzK8_F7Gd8uC8SN7ZFf3bRvSQoDJQeI8VamS83MI27ErcFt-cGzf4mxHZZvs7EMGXLUw3d-IL40TrzehdCY1Y8xdfSYxkeXdVM4VzMXIipsmiCKeXeSTAHmsezPBIYnUeLBGoiUr_yzDQSQ6g57XLV6b02DewCYeNdst2BvBu97Jlk_mREuYsY2Kpmb38icC2Henr9CUNlgEZlY1CnYNx3uJ7Zm-F");'></div>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-red-400 border-2 border-white dark:border-gray-900 rounded-full"></div>
+</div>
+<div>
+<h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100">Jessica Wong</h3>
+<p class="text-[11px] text-gray-500 dark:text-gray-400">Last interaction: 12 days ago</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="px-2 py-0.5 rounded-full bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 text-[10px] font-bold uppercase tracking-wider">Cold</span>
+<span class="material-symbols-outlined text-gray-300">chevron_right</span>
+</div>
+</div>
+</main>
+<!-- FAB -->
+<button class="fixed bottom-24 right-4 md:right-[calc(50%-220px)] w-14 h-14 bg-primary text-white rounded-full shadow-lg flex items-center justify-center hover:scale-105 transition-transform z-40">
+<span class="material-symbols-outlined !text-3xl">add</span>
+</button>
+<!-- Navigation Bar -->
+<nav class="sticky bottom-0 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 px-6 py-2 flex justify-between items-center z-30">
+<button class="flex flex-col items-center gap-1 text-gray-400">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px]">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined !fill-1">group</span>
+<span class="text-[10px] font-semibold">CRM</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-gray-400">
+<span class="material-symbols-outlined">history_edu</span>
+<span class="text-[10px]">Ghostwrite</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-gray-400">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-[10px]">Insights</span>
+</button>
+</nav>
+<!-- Interaction Drawer (Active/Slide-up State Simulated) -->
+<div class="fixed inset-0 z-50 flex flex-col justify-end pointer-events-none">
+<!-- Backdrop -->
+<div class="absolute inset-0 bg-black/40 backdrop-blur-sm pointer-events-auto opacity-100 transition-opacity"></div>
+<!-- Content -->
+<div class="relative w-full bg-white dark:bg-gray-900 rounded-t-[2rem] bottom-sheet-shadow pointer-events-auto h-[80vh] flex flex-col translate-y-0 transition-transform">
+<!-- Handle -->
+<div class="w-full flex justify-center py-4">
+<div class="w-12 h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full"></div>
+</div>
+<div class="overflow-y-auto px-6 pb-8">
+<!-- Drawer Header -->
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-full bg-center bg-cover border-2 border-primary/20" data-alt="Portrait of a professional woman" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCAMDA3LMRXri4oh_Tm14cWyALCOgKel1ukeFG82yNsr7x3_r2FjdPQ1hyVJyLTwjw70Xa2TXA7aC41rflnPlLRqplDS0ICI3BpTzHrl_TESGY7vYuWOBGdfkznjspiN-P-eISB5ACLbGu6NZJelFcU3JOYbAM_tAv70HFiMfOmZtXz677x2MHlQ6oFVMZKk72ge_Zek7aG25tXmZRSQvquIk4HkY7E5bCLgIjzFsjlNrTernGPaf7c0yaBZ7RuW2fiQpARi-3yYZIm");'></div>
+<div>
+<h2 class="text-xl font-bold">Sarah Jenkins</h2>
+<p class="text-sm text-gray-500">Global Head of Marketing @ TechCorp</p>
+</div>
+</div>
+<button class="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+<span class="material-symbols-outlined !text-lg">close</span>
+</button>
+</div>
+<!-- AI Suggested Talking Points Section -->
+<div class="bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-xl p-4 mb-6">
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-primary !text-xl">smart_toy</span>
+<h4 class="text-sm font-bold text-primary">AI Talking Points</h4>
+</div>
+<div class="space-y-3">
+<div class="bg-white dark:bg-gray-800 p-3 rounded-lg text-sm border border-gray-100 dark:border-gray-700 shadow-sm italic">
+                                "Hey Sarah, saw your recent post about the transition to AI-first marketing. That point about 'data empathy' really resonated..."
+                            </div>
+<div class="bg-white dark:bg-gray-800 p-3 rounded-lg text-sm border border-gray-100 dark:border-gray-700 shadow-sm italic">
+                                "Congrats on the TechCorp Q3 milestone! Would love to hear how your team is managing the scaling challenges you mentioned."
+                            </div>
+<button class="w-full py-2.5 bg-primary text-white text-sm font-semibold rounded-lg mt-2">
+                                Copy to Clipboard
+                            </button>
+</div>
+</div>
+<!-- History Timeline -->
+<h4 class="text-sm font-bold text-gray-500 uppercase tracking-widest mb-4">Interaction History</h4>
+<div class="space-y-6 relative before:content-[''] before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-0.5 before:bg-gray-100 dark:before:bg-gray-800">
+<!-- Timeline Item 1 -->
+<div class="flex gap-4 relative">
+<div class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-primary !text-sm">chat</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h5 class="text-sm font-semibold">LinkedIn DM</h5>
+<span class="text-[10px] text-gray-400">Oct 24, 2023</span>
+</div>
+<p class="text-xs text-gray-600 dark:text-gray-400 mt-1">Shared the latest whitepaper on AI-agent frameworks. She replied within 2 hours saying "This is exactly what we needed."</p>
+</div>
+</div>
+<!-- Timeline Item 2 -->
+<div class="flex gap-4 relative">
+<div class="w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/40 flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-green-600 dark:text-green-400 !text-sm">thumb_up</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h5 class="text-sm font-semibold">Post Engagement</h5>
+<span class="text-[10px] text-gray-400">Oct 21, 2023</span>
+</div>
+<p class="text-xs text-gray-600 dark:text-gray-400 mt-1">She commented on your post about 'Ghostwriting Ethics'. High intent detected.</p>
+</div>
+</div>
+<!-- Timeline Item 3 -->
+<div class="flex gap-4 relative">
+<div class="w-6 h-6 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-gray-400 !text-sm">event</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h5 class="text-sm font-semibold">Met at WebSummit</h5>
+<span class="text-[10px] text-gray-400">Oct 15, 2023</span>
+</div>
+<p class="text-xs text-gray-600 dark:text-gray-400 mt-1">Initial introduction via Mike. Discussed content strategy and personal branding for her exec team.</p>
+</div>
+</div>
+</div>
+<!-- Footer Action -->
+<div class="mt-8 pt-6 border-t border-gray-100 dark:border-gray-800 flex gap-3">
+<button class="flex-1 py-3 border border-gray-200 dark:border-gray-700 rounded-xl text-sm font-semibold">Edit Lead</button>
+<button class="flex-1 py-3 bg-primary text-white rounded-xl text-sm font-semibold">Go to LinkedIn</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PostPhantom LinkedIn In-Field Trigger</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#2b4bee",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101322",
+            },
+            fontFamily: {
+              "display": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .ghost-glow {
+            box-shadow: 0 0 15px 2px rgba(43, 75, 238, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation Bar (LinkedIn Context) -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7e9f3] dark:border-b-white/10 bg-white dark:bg-background-dark px-10 py-2 sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<div class="size-8 text-[#0077b5]">
+<svg fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"></path>
+</svg>
+</div>
+<label class="flex flex-col min-w-40 !h-9 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-[#4c599a] flex border-none bg-[#eef3f8] dark:bg-white/5 items-center justify-center pl-3 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined !text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-[#eef3f8] dark:bg-white/5 focus:ring-0 h-full placeholder:text-[#4c599a] px-2 rounded-r-lg text-sm" placeholder="Search" value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<div class="hidden md:flex items-center gap-6">
+<div class="flex flex-col items-center text-[#666] dark:text-gray-400">
+<span class="material-symbols-outlined !text-2xl">home</span>
+<span class="text-[10px]">Home</span>
+</div>
+<div class="flex flex-col items-center text-[#666] dark:text-gray-400">
+<span class="material-symbols-outlined !text-2xl">group</span>
+<span class="text-[10px]">My Network</span>
+</div>
+<div class="flex flex-col items-center text-[#666] dark:text-gray-400">
+<span class="material-symbols-outlined !text-2xl">work</span>
+<span class="text-[10px]">Jobs</span>
+</div>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-8 border border-gray-200" data-alt="User profile avatar thumbnail" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDDtKhGQrT43SjAs58HsG9Gd5cmNUf7SFvyHW7UqvpVgTyFLuA-sAGyKs6s_92ouk6GtUgptpeFPKbRxNr_XIw6usnpnepFM307yOT4TvIvbnXqX17E9Qk5BQPSe5A41ZWqSMpTGE32n3pQV0yl2yStyC41Bs_X55mQ-i7Ie07ZkmMvHXBf-awtuPTCLex6A3MY0v9mquFNA2jgex9itf63P64XNOVOpMJtL0EaGV5bnYol3EquWAxaOITH-Z4ygD0Xbkn7bWshhstC");'></div>
+</div>
+</header>
+<main class="flex-1 flex flex-col items-center justify-center p-4 lg:p-10">
+<!-- PostPhantom Branding Info -->
+<div class="max-w-[600px] w-full mb-8 text-center">
+<h1 class="text-[#0d101b] dark:text-white text-2xl font-bold leading-tight tracking-tight mb-2">EXT-03 In-Field Trigger</h1>
+<p class="text-[#4c599a] dark:text-gray-400 text-sm font-normal">Seamless ghostwriting integration directly inside LinkedIn's editor.</p>
+</div>
+<!-- Mock LinkedIn Modal Container -->
+<div class="w-full max-w-[600px] bg-white dark:bg-[#1b1f33] rounded-xl shadow-2xl border border-gray-200 dark:border-white/10 overflow-hidden">
+<!-- Modal Header -->
+<div class="flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-white/5">
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12" data-alt="John Doe professional headshot" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDMjxUG8bvKgHPDBmB6jd-tVheYdn2q_qMYLLbZ6Q24-P5OzdfEtZ5nppfCdF4TeFsPl5QEaCkhkuo7IthYBHea6dYC8lcZ2Qf1ioRkDAtNaeqkJcMBmkFsMjuVyPooicZyFW1wwoT-1aaFRUbCxJyYY5RHIaoVaSgNiE0JVzB1EU-l7QvQCpZmDwRd7nGZgZjGk9VhvWMpKe1f8rlHly7HU7Eh9gb0LogklFQmOo2X1BW0B_h8b0psnps3pwywxwnbgPhPy_nP-Lqr");'></div>
+<div>
+<h3 class="text-[#0d101b] dark:text-white text-base font-semibold leading-tight flex items-center gap-1">
+                                    John Doe
+                                    <span class="material-symbols-outlined !text-sm text-gray-400">arrow_drop_down</span>
+</h3>
+<div class="flex items-center gap-1 mt-0.5 px-2 py-0.5 border border-gray-300 dark:border-white/20 rounded-full w-fit">
+<span class="material-symbols-outlined !text-sm text-gray-500">public</span>
+<span class="text-[12px] font-semibold text-gray-600 dark:text-gray-300">Anyone</span>
+<span class="material-symbols-outlined !text-sm text-gray-500">arrow_drop_down</span>
+</div>
+</div>
+</div>
+<button class="text-gray-500 hover:bg-gray-100 dark:hover:bg-white/5 p-1 rounded-full">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Editor Body -->
+<div class="relative px-6 pt-4 pb-2">
+<div class="relative min-h-[220px]">
+<textarea class="w-full min-h-[200px] resize-none border-none focus:ring-0 bg-transparent text-lg text-gray-800 dark:text-gray-200 placeholder:text-gray-400 p-0" placeholder="What do you want to talk about?"></textarea>
+<!-- Floating PostPhantom Trigger (The Highlight) -->
+<div class="absolute bottom-4 right-0 flex flex-col items-end gap-2 group">
+<!-- Command Hint Tooltip -->
+<div class="bg-primary text-white text-[11px] px-2 py-1 rounded-lg font-medium tracking-wide opacity-100 transition-opacity flex items-center gap-1.5 shadow-lg">
+<span class="material-symbols-outlined !text-[14px]">auto_awesome</span>
+                                    AI Draft (Cmd + K)
+                                    <div class="absolute -bottom-1 right-4 w-2 h-2 bg-primary rotate-45"></div>
+</div>
+<!-- Ghost FAB (Hover State) -->
+<button class="size-11 bg-primary text-white rounded-xl flex items-center justify-center shadow-lg cursor-pointer ghost-glow transition-all hover:scale-105 active:scale-95">
+<span class="material-symbols-outlined !text-[28px]">mist</span>
+</button>
+</div>
+</div>
+<div class="flex gap-2 mb-4">
+<button class="text-primary font-semibold text-sm hover:underline">Add media</button>
+</div>
+</div>
+<!-- Modal Footer -->
+<div class="px-6 py-3 border-t border-gray-100 dark:border-white/5 flex items-center justify-between bg-gray-50/50 dark:bg-black/10">
+<div class="flex items-center gap-4 text-gray-500">
+<span class="material-symbols-outlined hover:text-gray-700 dark:hover:text-gray-300 cursor-pointer">image</span>
+<span class="material-symbols-outlined hover:text-gray-700 dark:hover:text-gray-300 cursor-pointer">calendar_month</span>
+<span class="material-symbols-outlined hover:text-gray-700 dark:hover:text-gray-300 cursor-pointer">celebration</span>
+<span class="material-symbols-outlined hover:text-gray-700 dark:hover:text-gray-300 cursor-pointer">more_horiz</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-gray-400">schedule</span>
+<button class="bg-[#e8e8e8] dark:bg-white/10 text-gray-400 dark:text-gray-500 font-bold px-4 py-1.5 rounded-full cursor-not-allowed">
+                                Post
+                            </button>
+</div>
+</div>
+</div>
+<!-- Feature Legend -->
+<div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[960px] w-full">
+<div class="flex flex-col gap-2 p-4 rounded-xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
+<div class="size-8 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-2">
+<span class="material-symbols-outlined">flare</span>
+</div>
+<h4 class="font-bold text-[#0d101b] dark:text-white">Active Hover State</h4>
+<p class="text-xs text-[#4c599a] dark:text-gray-400">The 100% opacity and subtle blue glow indicate the extension is ready to generate content.</p>
+</div>
+<div class="flex flex-col gap-2 p-4 rounded-xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
+<div class="size-8 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-2">
+<span class="material-symbols-outlined">keyboard_command_key</span>
+</div>
+<h4 class="font-bold text-[#0d101b] dark:text-white">Quick Trigger</h4>
+<p class="text-xs text-[#4c599a] dark:text-gray-400">Contextual tooltip reminds users they can use hotkeys or click the ghost to open the Command Bar.</p>
+</div>
+<div class="flex flex-col gap-2 p-4 rounded-xl bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10">
+<div class="size-8 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-2">
+<span class="material-symbols-outlined">view_in_ar</span>
+</div>
+<h4 class="font-bold text-[#0d101b] dark:text-white">Native Feel</h4>
+<p class="text-xs text-[#4c599a] dark:text-gray-400">Positions itself naturally in the LinkedIn whitespace without blocking standard post controls.</p>
+</div>
+</div>
+</main>
+<!-- Footer Meta -->
+<footer class="py-10 flex flex-col items-center border-t border-gray-200 dark:border-white/5">
+<div class="flex items-center gap-2 mb-2">
+<div class="size-6 bg-primary rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-white !text-sm">mist</span>
+</div>
+<span class="font-bold text-[#0d101b] dark:text-white">PostPhantom</span>
+</div>
+<p class="text-xs text-gray-500">LinkedIn Extension Mockup © 2024</p>
+</footer>
+</div>
+</div>
+</body></html>

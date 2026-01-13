@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PostPhantom - Mobile Editor Canvas</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4848e5",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111121",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#0e0e1b] dark:text-white">
+<!-- Main Container (Mobile Form Factor Simulation) -->
+<div class="relative mx-auto flex h-screen max-w-md flex-col overflow-hidden bg-white shadow-2xl dark:border-x dark:border-[#2a2a4a] dark:bg-[#111121]">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-30 flex items-center justify-between border-b border-[#e8e8f3] bg-white px-4 py-3 dark:border-[#2a2a4a] dark:bg-[#111121]">
+<div class="flex items-center gap-3">
+<div class="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-xl">auto_awesome</span>
+</div>
+<h2 class="text-base font-bold leading-tight tracking-tight">Post Editor</h2>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg bg-primary px-3 py-1.5 text-xs font-bold text-white transition-opacity active:opacity-80">
+                    Generate
+                </button>
+<button class="flex items-center justify-center rounded-lg bg-[#e8e8f3] px-3 py-1.5 text-xs font-bold text-[#0e0e1b] transition-opacity active:opacity-80 dark:bg-[#2a2a4a] dark:text-white">
+                    Copy
+                </button>
+</div>
+</header>
+<!-- Main Content / Text Editor -->
+<main class="relative flex flex-1 flex-col overflow-y-auto no-scrollbar px-4 pt-4 pb-32">
+<!-- Save Status -->
+<div class="mb-4 flex items-center gap-1.5 text-xs text-[#505095] dark:text-[#a0a0c5]">
+<span class="material-symbols-outlined text-sm">cloud_done</span>
+<span>Saved to drafts 2m ago</span>
+</div>
+<!-- Editor Input -->
+<label class="flex flex-1 flex-col">
+<textarea class="form-input w-full flex-1 resize-none border-none bg-transparent p-0 text-lg font-normal leading-relaxed text-[#0e0e1b] placeholder:text-[#a0a0c5] focus:ring-0 dark:text-white" placeholder="Start writing your LinkedIn masterpiece..."></textarea>
+</label>
+</main>
+<!-- Fixed Bottom Controls -->
+<div class="absolute bottom-0 left-0 w-full">
+<!-- Rich Text Toolbar -->
+<div class="mx-4 mb-4 flex items-center justify-between rounded-xl border border-[#e8e8f3] bg-white/90 p-1 shadow-lg backdrop-blur-md dark:border-[#2a2a4a] dark:bg-[#1a1a35]/90">
+<div class="flex items-center gap-1">
+<button class="flex h-10 w-10 items-center justify-center rounded-lg text-[#505095] hover:bg-primary/5 active:bg-primary/10 dark:text-[#a0a0c5]">
+<span class="material-symbols-outlined">format_bold</span>
+</button>
+<button class="flex h-10 w-10 items-center justify-center rounded-lg text-[#505095] hover:bg-primary/5 active:bg-primary/10 dark:text-[#a0a0c5]">
+<span class="material-symbols-outlined">format_italic</span>
+</button>
+<button class="flex h-10 w-10 items-center justify-center rounded-lg text-[#505095] hover:bg-primary/5 active:bg-primary/10 dark:text-[#a0a0c5]">
+<span class="material-symbols-outlined">format_list_bulleted</span>
+</button>
+<button class="flex h-10 w-10 items-center justify-center rounded-lg text-[#505095] hover:bg-primary/5 active:bg-primary/10 dark:text-[#a0a0c5]">
+<span class="material-symbols-outlined">link</span>
+</button>
+<button class="flex h-10 w-10 items-center justify-center rounded-lg text-[#505095] hover:bg-primary/5 active:bg-primary/10 dark:text-[#a0a0c5]">
+<span class="material-symbols-outlined">sentiment_satisfied</span>
+</button>
+</div>
+<div class="h-6 w-px bg-[#e8e8f3] dark:bg-[#2a2a4a]"></div>
+<div class="flex items-center gap-2 px-2">
+<span class="text-[10px] font-medium text-[#505095] dark:text-[#a0a0c5]">1,240 / 3,000</span>
+</div>
+</div>
+<!-- Floating Action Button for AI Sidebar -->
+<div class="flex justify-end px-4 pb-6">
+<button class="flex h-14 items-center justify-center gap-3 rounded-2xl bg-primary px-6 text-base font-bold text-white shadow-xl shadow-primary/30 transition-transform active:scale-95">
+<span class="material-symbols-outlined">smart_toy</span>
+<span>AI Controls</span>
+</button>
+</div>
+<!-- Progress Indicator (Small bar at very bottom) -->
+<div class="h-1 w-full bg-[#d1d1e6] dark:bg-[#2a2a4a]">
+<div class="h-full bg-primary" style="width: 41%;"></div>
+</div>
+</div>
+<!-- AI Control Bottom Sheet Overlay (Hidden by default, shown here for design context) -->
+<div class="absolute inset-x-0 bottom-0 z-40 h-[60%] translate-y-full transform bg-white shadow-[0_-10px_40px_rgba(0,0,0,0.1)] transition-transform duration-300 dark:bg-[#1a1a35] rounded-t-3xl border-t border-[#e8e8f3] dark:border-[#2a2a4a]">
+<!-- Handle -->
+<div class="mx-auto mt-3 h-1.5 w-12 rounded-full bg-[#d1d1e6] dark:bg-[#2a2a4a]"></div>
+<div class="p-6">
+<h3 class="mb-4 text-lg font-bold">AI Assistant</h3>
+<div class="space-y-4">
+<!-- Quick Actions Grid -->
+<div class="grid grid-cols-2 gap-3">
+<button class="flex flex-col items-start gap-2 rounded-xl border border-[#e8e8f3] p-3 text-left hover:border-primary/50 dark:border-[#2a2a4a]">
+<span class="material-symbols-outlined text-primary">auto_fix_high</span>
+<span class="text-sm font-semibold">Rewrite Hook</span>
+</button>
+<button class="flex flex-col items-start gap-2 rounded-xl border border-[#e8e8f3] p-3 text-left hover:border-primary/50 dark:border-[#2a2a4a]">
+<span class="material-symbols-outlined text-primary">short_text</span>
+<span class="text-sm font-semibold">Summarize</span>
+</button>
+</div>
+<!-- Tone Selector -->
+<div class="flex flex-col gap-2">
+<p class="text-xs font-bold uppercase tracking-wider text-[#505095] dark:text-[#a0a0c5]">Adjust Tone</p>
+<div class="flex gap-2 overflow-x-auto no-scrollbar pb-1">
+<button class="whitespace-nowrap rounded-full bg-primary px-4 py-1.5 text-xs font-bold text-white">Professional</button>
+<button class="whitespace-nowrap rounded-full bg-[#e8e8f3] px-4 py-1.5 text-xs font-medium text-[#0e0e1b] dark:bg-[#2a2a4a] dark:text-white">Casual</button>
+<button class="whitespace-nowrap rounded-full bg-[#e8e8f3] px-4 py-1.5 text-xs font-medium text-[#0e0e1b] dark:bg-[#2a2a4a] dark:text-white">Witty</button>
+<button class="whitespace-nowrap rounded-full bg-[#e8e8f3] px-4 py-1.5 text-xs font-medium text-[#0e0e1b] dark:bg-[#2a2a4a] dark:text-white">Authoritative</button>
+</div>
+</div>
+<!-- Progress Stats -->
+<div class="mt-4 flex flex-col gap-2 rounded-xl bg-background-light p-4 dark:bg-[#111121]">
+<div class="flex justify-between">
+<span class="text-xs font-medium">LinkedIn Limit</span>
+<span class="text-xs font-medium">1,240/3,000</span>
+</div>
+<div class="h-2 w-full rounded bg-[#d1d1e6] dark:bg-[#2a2a4a]">
+<div class="h-2 rounded bg-primary" style="width: 41%;"></div>
+</div>
+<p class="text-[10px] text-[#505095] dark:text-[#a0a0c5]">Optimized for desktop feed visibility</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

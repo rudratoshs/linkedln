@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PostPhantom | Rate Limit Lockout</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#5048e5",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#121121",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#0f0e1b] dark:text-white transition-colors duration-300">
+<div class="relative flex h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#e8e8f3] dark:border-white/10 px-6 py-4 md:px-40">
+<div class="flex items-center gap-4">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-tight">PostPhantom</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8 items-center">
+<div class="hidden md:flex items-center gap-4 text-sm font-medium opacity-70">
+<span>Free Plan</span>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" data-alt="User profile avatar placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBPlA8kOHQRGCwK7KTC37RdIk_aJdW--3-3UZT9_N5F8xjL2kKdnj-sk0lnJZLi6hDWlyp3Z4cNQ3pkThUy2zYUmsjInr88ruISfXn6cwzTNjOdxNjZcEJxL70DjFD5lF2et4Hier6kMd0dXr_mSdjg4oFXz5zvoj7C4c2RbBwPbRlfNbUMWHR9I5j53j7q2UZBhpOO1GdnMCqr45BlyRb4xZkXmbEs8XLAUhUYW955jT-pmnjj1P3S7FRn2Clwl1uh7s91W_6B0Rk3");'></div>
+</div>
+</header>
+<!-- Main Content - Interstitial Lockout Screen -->
+<main class="flex flex-1 items-center justify-center p-4">
+<div class="max-w-[560px] w-full bg-white dark:bg-[#1a192b] rounded-xl shadow-xl border border-[#e8e8f3] dark:border-white/5 overflow-hidden">
+<!-- Lock Icon & Visual -->
+<div class="flex justify-center pt-10">
+<div class="relative">
+<div class="absolute inset-0 bg-primary/10 rounded-full blur-2xl"></div>
+<div class="relative flex items-center justify-center size-20 rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1">lock</span>
+</div>
+</div>
+</div>
+<!-- Heading -->
+<div class="px-6 text-center">
+<h1 class="text-2xl md:text-3xl font-bold leading-tight pt-6 pb-2">Daily Limit Reached</h1>
+<p class="text-sm md:text-base font-normal leading-relaxed opacity-70 px-4 md:px-8">
+                            You've reached your generation limit for today. To keep creating high-impact content without interruption, consider upgrading your plan.
+                        </p>
+</div>
+<!-- Timer Section -->
+<div class="px-8 py-6">
+<p class="text-center text-xs font-semibold uppercase tracking-widest text-primary mb-4">Resetting In</p>
+<div class="flex gap-4 justify-center">
+<div class="flex flex-col items-center gap-2">
+<div class="flex size-14 md:size-16 items-center justify-center rounded-lg bg-[#e8e8f3] dark:bg-white/5">
+<p class="text-xl font-bold">14</p>
+</div>
+<p class="text-[10px] md:text-xs font-medium uppercase opacity-60">Hours</p>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="flex size-14 md:size-16 items-center justify-center rounded-lg bg-[#e8e8f3] dark:bg-white/5">
+<p class="text-xl font-bold">22</p>
+</div>
+<p class="text-[10px] md:text-xs font-medium uppercase opacity-60">Minutes</p>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="flex size-14 md:size-16 items-center justify-center rounded-lg bg-[#e8e8f3] dark:bg-white/5">
+<p class="text-xl font-bold">45</p>
+</div>
+<p class="text-[10px] md:text-xs font-medium uppercase opacity-60">Seconds</p>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="px-8 pb-10">
+<div class="flex flex-col gap-3 w-full">
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-primary text-white text-base font-bold leading-normal tracking-wide w-full shadow-lg shadow-primary/20 hover:brightness-110 transition-all">
+<span class="truncate">Upgrade to Pro</span>
+<span class="material-symbols-outlined ml-2 text-xl">bolt</span>
+</button>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-transparent text-[#0f0e1b] dark:text-white text-base font-bold leading-normal tracking-wide w-full hover:bg-[#e8e8f3] dark:hover:bg-white/5 transition-all">
+<span class="truncate">Back to Dashboard</span>
+</button>
+</div>
+<p class="text-center text-[11px] mt-6 opacity-40">
+                            Pro users enjoy unlimited AI generations, post scheduling, and advanced analytics.
+                        </p>
+</div>
+</div>
+</main>
+<!-- Footer / System Note -->
+<footer class="py-6 text-center text-[12px] opacity-40">
+<p>© 2024 PostPhantom AI. All rights reserved.</p>
+</footer>
+</div>
+</div>
+</body></html>

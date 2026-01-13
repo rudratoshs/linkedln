@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PostPhantom Mobile Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#5048e5",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#121121",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<!-- Mobile-Optimized Layout Container -->
+<div class="flex flex-col min-h-screen max-w-[480px] mx-auto bg-white dark:bg-background-dark shadow-xl min-h-screen relative">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 flex items-center justify-between border-b border-solid border-[#e8e8f3] dark:border-gray-800 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md px-4 py-3">
+<div class="flex items-center gap-3 text-[#0f0e1b] dark:text-white">
+<div class="size-8 flex items-center justify-center bg-primary rounded-lg text-white">
+<svg class="w-6 h-6" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-tight">PostPhantom</h2>
+</div>
+<button class="flex size-10 items-center justify-center rounded-lg bg-[#e8e8f3] dark:bg-gray-800 text-[#0f0e1b] dark:text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<main class="flex-1 pb-20">
+<!-- PageHeading -->
+<div class="flex flex-col gap-1 p-6">
+<h1 class="text-[#0f0e1b] dark:text-white text-2xl font-bold leading-tight">Command Center</h1>
+<p class="text-[#545095] dark:text-gray-400 text-sm font-normal">Manage your LinkedIn strategy</p>
+</div>
+<!-- Usage Credits (Circular Visualization for Mobile) -->
+<div class="px-6 mb-6">
+<div class="bg-primary/5 dark:bg-primary/10 rounded-xl p-6 flex items-center justify-between border border-primary/10">
+<div class="flex flex-col gap-1">
+<p class="text-[#0f0e1b] dark:text-white text-base font-semibold">Usage Credits</p>
+<p class="text-[#545095] dark:text-gray-400 text-xs">Daily limit resets in 4h</p>
+<p class="text-primary text-xl font-bold mt-2">85 / 100</p>
+</div>
+<div class="relative flex items-center justify-center">
+<svg class="size-20 transform -rotate-90">
+<circle class="text-primary/10" cx="40" cy="40" fill="transparent" r="34" stroke="currentColor" stroke-width="6"></circle>
+<circle class="text-primary" cx="40" cy="40" fill="transparent" r="34" stroke="currentColor" stroke-dasharray="213.6" stroke-dashoffset="32" stroke-width="6"></circle>
+</svg>
+<span class="absolute text-primary text-xs font-bold">85%</span>
+</div>
+</div>
+</div>
+<!-- Stats (Vertical Stacked) -->
+<div class="px-6 space-y-4">
+<div class="flex items-center justify-between p-4 rounded-xl border border-[#d2d1e6] dark:border-gray-800 bg-white dark:bg-gray-900/50 shadow-sm">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600">
+<span class="material-symbols-outlined text-xl">visibility</span>
+</div>
+<div>
+<p class="text-[#545095] dark:text-gray-400 text-xs font-medium uppercase tracking-wider">Post Views</p>
+<p class="text-[#0f0e1b] dark:text-white text-xl font-bold">12.4k</p>
+</div>
+</div>
+<p class="text-[#078841] text-sm font-bold bg-green-50 dark:bg-green-900/20 px-2 py-1 rounded">+12%</p>
+</div>
+<div class="flex items-center justify-between p-4 rounded-xl border border-[#d2d1e6] dark:border-gray-800 bg-white dark:bg-gray-900/50 shadow-sm">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600">
+<span class="material-symbols-outlined text-xl">insights</span>
+</div>
+<div>
+<p class="text-[#545095] dark:text-gray-400 text-xs font-medium uppercase tracking-wider">Engagement Rate</p>
+<p class="text-[#0f0e1b] dark:text-white text-xl font-bold">4.8%</p>
+</div>
+</div>
+<p class="text-[#078841] text-sm font-bold bg-green-50 dark:bg-green-900/20 px-2 py-1 rounded">+0.5%</p>
+</div>
+<div class="flex items-center justify-between p-4 rounded-xl border border-[#d2d1e6] dark:border-gray-800 bg-white dark:bg-gray-900/50 shadow-sm">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600">
+<span class="material-symbols-outlined text-xl">person_add</span>
+</div>
+<div>
+<p class="text-[#545095] dark:text-gray-400 text-xs font-medium uppercase tracking-wider">Followers</p>
+<p class="text-[#0f0e1b] dark:text-white text-xl font-bold">+152</p>
+</div>
+</div>
+<p class="text-[#078841] text-sm font-bold bg-green-50 dark:bg-green-900/20 px-2 py-1 rounded">+8%</p>
+</div>
+</div>
+<!-- SectionHeader -->
+<div class="px-6 pt-8 pb-4 flex items-center justify-between">
+<h2 class="text-[#0f0e1b] dark:text-white text-xl font-bold leading-tight">Golden Hour Feed</h2>
+<span class="text-primary text-xs font-bold uppercase tracking-widest bg-primary/10 px-2 py-1 rounded">Live</span>
+</div>
+<!-- Feed Content -->
+<div class="px-6 space-y-4">
+<!-- Feed Item 1 -->
+<div class="bg-white dark:bg-gray-900 border border-[#d2d1e6] dark:border-gray-800 rounded-xl overflow-hidden shadow-sm">
+<div class="p-4 flex gap-3">
+<img class="size-10 rounded-full object-cover" data-alt="Professional headshot of a business woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0HGOG814wMMQJ_KP1VR0fcyctTMJFcQNwd32Eta4v-H-8Efxr30x4Zue5_MT4PKTNU7VcVGynK3zxCePZK1H1pi-vL4nEw5CFJ0170ypd4RC0aJbp0H45jXsvX5tXfQGfpmG_pXclXsGi0RvBKn4EXwfd77L1VjRFhnIDDTGsNAjChhuoSoSiIxfIBE-F1XiWs_bj6KaL_mdCOCtZoV6srq1qliegibXYl7nrIK8zjo8cidX069MXr4qRtn_ybSmPQ3OIeOgltVEI"/>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-[#0f0e1b] dark:text-white text-sm font-bold">Sarah Chen</h4>
+<p class="text-[#545095] dark:text-gray-400 text-[10px]">VP of Product @ TechFlow • 2m ago</p>
+</div>
+<span class="text-xs font-medium text-primary">High Priority</span>
+</div>
+<p class="mt-2 text-sm text-[#0f0e1b] dark:text-gray-300 line-clamp-3">
+                                Just launched our new AI-driven analytics module! The journey from ideation to production was filled with challenges, but the team...
+                            </p>
+</div>
+</div>
+<div class="px-4 pb-4">
+<button class="w-full bg-primary hover:bg-primary/90 text-white py-2.5 rounded-lg text-sm font-bold flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">auto_fix_high</span>
+                            Generate Comment
+                        </button>
+</div>
+</div>
+<!-- Feed Item 2 -->
+<div class="bg-white dark:bg-gray-900 border border-[#d2d1e6] dark:border-gray-800 rounded-xl overflow-hidden shadow-sm">
+<div class="p-4 flex gap-3">
+<img class="size-10 rounded-full object-cover" data-alt="Professional headshot of a smiling man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOlQibYvIsfmkv6-ptLMcN7CS15FVyLR5SW4XDnZOlZRxEJMxnCbJ-1Dz0E3MswV3bb8ErpEcNFL9lQ8HsMp-L31TRWEVj45CFzaX8f381Q6kJkqGXuHHmAow05uaK88qxhXVdDEJdF1_yCwczLhMFUFnGjMJnxP0OXA5ZSt8eU04LvSS2PhOQ4dAc7OItHaBXsc2DLpZMX4RhEkNmAo89bFvNqjEe6jNi_WVjEByM0iMJJjwnOpAlHtoQDCtMPCM1Py3CyLMZHZCA"/>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-[#0f0e1b] dark:text-white text-sm font-bold">Marcus Thorne</h4>
+<p class="text-[#545095] dark:text-gray-400 text-[10px]">Founder of GrowthLab • 15m ago</p>
+</div>
+<span class="text-xs font-medium text-gray-400">Recent</span>
+</div>
+<p class="mt-2 text-sm text-[#0f0e1b] dark:text-gray-300 line-clamp-3">
+                                Why most B2B content fails: 1. No original perspective 2. Too many buzzwords 3. Ignoring the "so what?" factor...
+                            </p>
+</div>
+</div>
+<div class="px-4 pb-4">
+<button class="w-full bg-primary/10 text-primary hover:bg-primary/20 py-2.5 rounded-lg text-sm font-bold flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">auto_fix_high</span>
+                            Generate Comment
+                        </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Fixed Bottom Nav (Mobile standard) -->
+<nav class="fixed bottom-0 left-0 right-0 max-w-[480px] mx-auto bg-white/95 dark:bg-background-dark/95 border-t border-[#e8e8f3] dark:border-gray-800 py-2 px-6 flex justify-between items-center z-50 backdrop-blur-sm">
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-2xl">grid_view</span>
+<span class="text-[10px] font-bold">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-[#545095] dark:text-gray-400">
+<span class="material-symbols-outlined text-2xl">schedule</span>
+<span class="text-[10px] font-bold">Planner</span>
+</button>
+<!-- Center FAB -->
+<button class="relative -top-6 size-12 bg-primary rounded-full flex items-center justify-center text-white shadow-lg shadow-primary/40 border-4 border-white dark:border-background-dark">
+<span class="material-symbols-outlined text-2xl">add</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-[#545095] dark:text-gray-400">
+<span class="material-symbols-outlined text-2xl">analytics</span>
+<span class="text-[10px] font-bold">Stats</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-[#545095] dark:text-gray-400">
+<span class="material-symbols-outlined text-2xl">settings</span>
+<span class="text-[10px] font-bold">Setup</span>
+</button>
+</nav>
+</div>
+</body></html>

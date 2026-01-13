@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PostPhantom Extension - Draft Review Gate</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4848e5",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111121",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .diff-added {
+            background-color: #dcfce7;
+            color: #166534;
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+        .diff-removed {
+            background-color: #fee2e2;
+            color: #991b1b;
+            text-decoration: line-through;
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#0e0e1b] dark:text-[#f8f8fb] min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="flex items-center justify-between border-b border-solid border-[#e8e8f3] dark:border-[#2a2a4a] px-10 py-3 bg-white dark:bg-background-dark sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<div class="size-8 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-tight">PostPhantom</h2>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2 px-3 py-1.5 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
+<span class="material-symbols-outlined text-green-600 dark:text-green-400 text-sm">shield</span>
+<span class="text-green-700 dark:text-green-300 text-xs font-semibold uppercase tracking-wider">Safety Badge Active</span>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex size-10 items-center justify-center rounded-lg bg-[#e8e8f3] dark:bg-[#2a2a4a] text-[#0e0e1b] dark:text-white">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary" data-alt="User profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB9F77yuy6hXwikNT0iGjyRUBzKd3vYfGOmo0Bc-ijUclYpjki4sJiwIbxpaluDcsqfCKRDRvE-a0tYR9TF4NANXYe56C7fRdaOF7GfJhXqz-qTnCUyXFnxQsjJ8G6lVQBXYTjTJNIIfDxtyHj5Doqp_30CQEj7VAZrI9zvvtoQwdtzEqLkG28YfN-oiYg8hrTundbD6mCBD66yAFUrgESnXtoo-qUAEFtgndi6VON2vS7VZcDvuTpgLTbmnuwveemjydkYNPhRT-uo");'></div>
+</div>
+</div>
+</header>
+<main class="flex-1 flex flex-col items-center py-8 px-4 max-w-[1200px] mx-auto w-full">
+<!-- PageHeading -->
+<div class="w-full mb-8 text-center">
+<h1 class="text-3xl font-extrabold tracking-tight mb-2">EXT-05 Draft Governor</h1>
+<p class="text-[#505095] dark:text-[#a0a0cc] text-lg">Human-in-the-Loop Review Gate: Quality check AI outputs before they hit LinkedIn.</p>
+</div>
+<!-- SegmentedButtons (Draft Selection) -->
+<div class="w-full max-w-[600px] mb-8">
+<div class="flex h-12 w-full items-center justify-center rounded-xl bg-[#e8e8f3] dark:bg-[#1a1a2e] p-1.5">
+<label class="flex cursor-pointer h-full grow items-center justify-center rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-primary has-[:checked]:shadow-sm has-[:checked]:text-primary dark:has-[:checked]:text-white text-[#505095] dark:text-[#8080aa] text-sm font-semibold transition-all">
+<span class="truncate">Draft 1 (High Confidence)</span>
+<input checked="" class="hidden" name="draft-selector" type="radio" value="1"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-primary has-[:checked]:shadow-sm has-[:checked]:text-primary dark:has-[:checked]:text-white text-[#505095] dark:text-[#8080aa] text-sm font-semibold transition-all">
+<span class="truncate">Draft 2</span>
+<input class="hidden" name="draft-selector" type="radio" value="2"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-primary has-[:checked]:shadow-sm has-[:checked]:text-primary dark:has-[:checked]:text-white text-[#505095] dark:text-[#8080aa] text-sm font-semibold transition-all">
+<span class="truncate">Draft 3</span>
+<input class="hidden" name="draft-selector" type="radio" value="3"/>
+</label>
+</div>
+</div>
+<!-- Carousel / Draft Cards -->
+<div class="w-full flex items-center gap-4">
+<button class="size-12 flex items-center justify-center rounded-full bg-white dark:bg-[#1a1a2e] shadow-md border border-[#e8e8f3] dark:border-[#2a2a4a] text-primary hover:scale-105 transition-transform">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<div class="flex-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-hidden py-4">
+<!-- Draft Card 1 -->
+<div class="flex flex-col bg-white dark:bg-[#1a1a2e] rounded-xl shadow-xl border-t-4 border-primary overflow-hidden min-h-[500px]">
+<div class="p-6 border-b border-[#e8e8f3] dark:border-[#2a2a4a] flex justify-between items-center bg-[#f8f8fb] dark:bg-[#111121]">
+<div>
+<p class="font-bold text-lg">Professional Style</p>
+<p class="text-xs text-[#505095] dark:text-[#8080aa] font-medium uppercase tracking-tighter">Draft 1 of 3</p>
+</div>
+<span class="flex items-center gap-1 text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded-full">
+<span class="material-symbols-outlined text-sm">trending_up</span> 98% Match
+                        </span>
+</div>
+<div class="p-6 flex-1 text-base leading-relaxed text-[#2d2d4d] dark:text-[#e0e0f0]">
+<p class="mb-4">I just spent 10 hours <span class="diff-removed">working</span> <span class="diff-added">analyzing data</span> on the latest AI trends in B2B SaaS.</p>
+<p class="mb-4">The core takeaway? <span class="diff-added">Authenticity is no longer optional, it's the baseline.</span> Most ghostwriters forget that the 'ghost' shouldn't mean 'robot'.</p>
+<p>Here are 3 ways to <span class="diff-removed">get better</span> <span class="diff-added">leverage PostPhantom</span> for your personal brand:</p>
+<ul class="list-disc ml-5 mt-2 space-y-1">
+<li>Consistency without burnout</li>
+<li>Data-driven hooks</li>
+<li><span class="diff-added">Human-in-the-loop review cycles</span></li>
+</ul>
+</div>
+<div class="p-4 bg-[#f8f8fb] dark:bg-[#111121] border-t border-[#e8e8f3] dark:border-[#2a2a4a] flex flex-col gap-3">
+<button class="w-full py-3 bg-primary text-white rounded-lg font-bold flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined text-sm">input</span>
+                            Insert into Post
+                        </button>
+<div class="flex gap-2">
+<button class="flex-1 py-2 border border-primary text-primary rounded-lg font-semibold text-sm flex items-center justify-center gap-1 hover:bg-primary/5 transition-colors">
+<span class="material-symbols-outlined text-sm">edit</span> Inline Edit
+                            </button>
+<button class="flex-1 py-2 border border-[#e8e8f3] dark:border-[#2a2a4a] text-[#505095] dark:text-[#a0a0cc] rounded-lg font-semibold text-sm flex items-center justify-center gap-1 hover:bg-[#e8e8f3] dark:hover:bg-[#2a2a4a] transition-colors">
+<span class="material-symbols-outlined text-sm">refresh</span> Regenerate
+                            </button>
+</div>
+</div>
+</div>
+<!-- Draft Card 2 (Partial visibility/Inactive) -->
+<div class="hidden md:flex flex-col bg-white/60 dark:bg-[#1a1a2e]/60 rounded-xl shadow-lg border border-[#e8e8f3] dark:border-[#2a2a4a] overflow-hidden grayscale opacity-80 scale-95 origin-left">
+<div class="p-6 border-b border-[#e8e8f3] dark:border-[#2a2a4a] flex justify-between items-center">
+<div>
+<p class="font-bold text-lg">Storytelling Style</p>
+<p class="text-xs text-[#505095] dark:text-[#8080aa]">Draft 2 of 3</p>
+</div>
+</div>
+<div class="p-6 flex-1 text-sm text-[#505095] dark:text-[#a0a0cc]">
+<p class="mb-4">Imagine a world where your LinkedIn posts write themselves while you sleep. <span class="diff-added">That's not a dream, it's a workflow.</span></p>
+<p>I remember when I first started...</p>
+</div>
+<div class="p-4 bg-gray-50 dark:bg-[#111121] flex flex-col gap-2">
+<button class="w-full py-2 bg-[#e8e8f3] dark:bg-[#2a2a4a] text-[#0e0e1b] dark:text-white rounded-lg font-bold text-sm">Select Draft 2</button>
+</div>
+</div>
+<!-- Draft Card 3 (Partial visibility/Inactive) -->
+<div class="hidden lg:flex flex-col bg-white/60 dark:bg-[#1a1a2e]/60 rounded-xl shadow-lg border border-[#e8e8f3] dark:border-[#2a2a4a] overflow-hidden grayscale opacity-80 scale-95 origin-left">
+<div class="p-6 border-b border-[#e8e8f3] dark:border-[#2a2a4a] flex justify-between items-center">
+<div>
+<p class="font-bold text-lg">Direct Style</p>
+<p class="text-xs text-[#505095] dark:text-[#8080aa]">Draft 3 of 3</p>
+</div>
+</div>
+<div class="p-6 flex-1 text-sm text-[#505095] dark:text-[#a0a0cc]">
+<p class="mb-4 text-sm">AI for LinkedIn: The hard truth. <span class="diff-removed">Don't use it.</span> <span class="diff-added">Use it right.</span></p>
+</div>
+<div class="p-4 bg-gray-50 dark:bg-[#111121] flex flex-col gap-2">
+<button class="w-full py-2 bg-[#e8e8f3] dark:bg-[#2a2a4a] text-[#0e0e1b] dark:text-white rounded-lg font-bold text-sm">Select Draft 3</button>
+</div>
+</div>
+</div>
+<button class="size-12 flex items-center justify-center rounded-full bg-white dark:bg-[#1a1a2e] shadow-md border border-[#e8e8f3] dark:border-[#2a2a4a] text-primary hover:scale-105 transition-transform">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+<!-- Diff Legend -->
+<div class="mt-8 flex gap-6 text-xs font-semibold uppercase tracking-widest text-[#505095] dark:text-[#8080aa]">
+<div class="flex items-center gap-2">
+<span class="size-3 rounded-sm bg-[#dcfce7] border border-green-300"></span>
+                AI Addition
+            </div>
+<div class="flex items-center gap-2">
+<span class="size-3 rounded-sm bg-[#fee2e2] border border-red-300 line-through"></span>
+                Original Removal
+            </div>
+</div>
+</main>
+<!-- Footer Warning -->
+<footer class="mt-auto py-6 px-4 bg-white dark:bg-[#111121] border-t border-[#e8e8f3] dark:border-[#2a2a4a] text-center">
+<div class="inline-flex items-center gap-2 px-4 py-2 bg-yellow-50 dark:bg-yellow-900/10 border border-yellow-200 dark:border-yellow-800/50 rounded-full">
+<span class="material-symbols-outlined text-yellow-600 dark:text-yellow-500 text-lg">info</span>
+<span class="text-yellow-700 dark:text-yellow-500 text-sm font-medium">Reviewing is required before posting. Your editorial touch matters.</span>
+</div>
+<p class="text-[#505095] dark:text-[#8080aa] text-xs mt-4">© 2024 PostPhantom AI Strategy Platform • Chrome Extension v2.4.1</p>
+</footer>
+</body></html>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PostPhantom Command Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4848e5",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111121",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-nav {
+            background-color: #e8e8f3;
+            color: #4848e5;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111827] dark:text-gray-100">
+<div class="flex min-h-screen">
+<!-- Sidebar Navigation -->
+<aside class="w-64 border-r border-[#e8e8f3] dark:border-gray-800 bg-white dark:bg-[#111121] hidden lg:flex flex-col sticky top-0 h-screen">
+<div class="p-6">
+<div class="flex items-center gap-3">
+<div class="bg-primary size-8 rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined">auto_awesome</span>
+</div>
+<div>
+<h1 class="text-[#0e0e1b] dark:text-white text-lg font-bold leading-none">PostPhantom</h1>
+<p class="text-primary text-xs font-medium">LinkedIn Growth</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-4 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg active-nav" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Command Center</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="text-sm font-medium">Content Planner</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-sm font-medium">Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined">extension</span>
+<span class="text-sm font-medium">Extension Status</span>
+</a>
+<div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-800">
+<p class="px-3 text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-2">Account</p>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined">credit_card</span>
+<span class="text-sm font-medium">Billing</span>
+</a>
+</div>
+</nav>
+<div class="p-4 border-t border-gray-100 dark:border-gray-800">
+<button class="w-full bg-primary text-white py-2.5 rounded-lg text-sm font-bold flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">edit</span>
+                    Create New Post
+                </button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col min-w-0">
+<!-- Header -->
+<header class="h-16 bg-white dark:bg-[#111121] border-b border-[#e8e8f3] dark:border-gray-800 flex items-center justify-between px-8 sticky top-0 z-10">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xl">search</span>
+<input class="w-full bg-gray-50 dark:bg-gray-800 border-none rounded-lg pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary/20 placeholder:text-gray-400" placeholder="Search accounts, posts, or keywords..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-gray-900"></span>
+</button>
+<div class="h-8 w-px bg-gray-200 dark:bg-gray-800"></div>
+<div class="flex items-center gap-3 pl-2">
+<div class="text-right hidden sm:block">
+<p class="text-sm font-semibold leading-none">Alex Rivera</p>
+<p class="text-[10px] text-gray-500 uppercase font-bold tracking-tight">Pro Plan</p>
+</div>
+<div class="size-9 rounded-full bg-cover bg-center border-2 border-primary/20" data-alt="User profile avatar portrait" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCwF-WtVaFXt97Th1IzXM-ZEGPwAWYHoW094axahTfnEWclv6J0lBbrNr-2OTUpxDlUFMB8Gd0TTjPGXm5NcXDhCHU9ahrbBmv5dgkudN21XThOQ7IZa2JEnuqbL24NZH7dVF1suf9-OEH1Gh2RkRIFpdqr0v6oXiil6phC40hAaUE9AbZV4P-__UW0eKc8pcvo4t0OwvmOHBKV2LBGvUdw3kp_02_P_bBNidITLr0G4dd02D8mWv9iPmFN5mnzXxJ8OiF8D2wq-CRP');"></div>
+</div>
+</div>
+</header>
+<!-- Dashboard Body -->
+<div class="p-8 max-w-7xl mx-auto w-full">
+<div class="mb-8">
+<h2 class="text-3xl font-black text-[#0e0e1b] dark:text-white tracking-tight">Command Center</h2>
+<p class="text-gray-500 font-medium">Welcome back, Alex. Your engagement opportunities are peaking.</p>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<!-- Stat Card 1 -->
+<div class="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 p-6 rounded-xl shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-sm font-medium text-gray-500">Engagement Rate</p>
+<h3 class="text-2xl font-bold">4.2%</h3>
+</div>
+<span class="flex items-center text-green-500 text-xs font-bold bg-green-50 px-2 py-1 rounded-full">+1.2%</span>
+</div>
+<div class="h-16 w-full">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 100 40">
+<path d="M0 35 Q 20 15, 40 30 T 80 10 T 100 25" fill="none" stroke="#4848e5" stroke-width="2"></path>
+<path d="M0 35 Q 20 15, 40 30 T 80 10 T 100 25 L 100 40 L 0 40 Z" fill="url(#grad1)" opacity="0.1"></path>
+<defs>
+<lineargradient id="grad1" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:#4848e5;stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:#4848e5;stop-opacity:0"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+</div>
+<!-- Stat Card 2 -->
+<div class="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 p-6 rounded-xl shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-sm font-medium text-gray-500">Post Reach</p>
+<h3 class="text-2xl font-bold">12,480</h3>
+</div>
+<span class="flex items-center text-green-500 text-xs font-bold bg-green-50 px-2 py-1 rounded-full">+15.4%</span>
+</div>
+<div class="h-16 w-full">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 100 40">
+<path d="M0 30 Q 15 35, 30 20 T 60 25 T 100 5" fill="none" stroke="#4848e5" stroke-width="2"></path>
+<path d="M0 30 Q 15 35, 30 20 T 60 25 T 100 5 L 100 40 L 0 40 Z" fill="url(#grad2)" opacity="0.1"></path>
+<defs>
+<lineargradient id="grad2" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:#4848e5;stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:#4848e5;stop-opacity:0"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+</div>
+<!-- Stat Card 3 -->
+<div class="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 p-6 rounded-xl shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-sm font-medium text-gray-500">New Connections</p>
+<h3 class="text-2xl font-bold">124</h3>
+</div>
+<span class="flex items-center text-green-500 text-xs font-bold bg-green-50 px-2 py-1 rounded-full">+8.2%</span>
+</div>
+<div class="h-16 w-full">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 100 40">
+<path d="M0 20 Q 25 10, 50 30 T 100 15" fill="none" stroke="#4848e5" stroke-width="2"></path>
+<path d="M0 20 Q 25 10, 50 30 T 100 15 L 100 40 L 0 40 Z" fill="url(#grad3)" opacity="0.1"></path>
+<defs>
+<lineargradient id="grad3" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:#4848e5;stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:#4848e5;stop-opacity:0"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Golden Hour Feed -->
+<div class="lg:col-span-2 flex flex-col gap-4">
+<div class="flex items-center justify-between px-2">
+<div class="flex items-center gap-2">
+<h2 class="text-xl font-bold tracking-tight">Golden Hour Feed</h2>
+<span class="bg-amber-100 text-amber-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Active Now</span>
+</div>
+<button class="text-primary text-sm font-bold hover:underline">View All</button>
+</div>
+<div class="space-y-4">
+<!-- Feed Item 1 -->
+<div class="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 p-5 rounded-xl shadow-sm hover:border-primary/30 transition-colors">
+<div class="flex gap-4">
+<div class="size-12 rounded-lg bg-cover bg-center shrink-0" data-alt="LinkedIn professional portrait" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD24pShk1OxiLYoJZVHJJCJTnfSOjhqd_zaQQxWi9DQj1NaZ0PC6mGqPseeBOGkAXtFApsH_YTw3yCE4N0aMiHRf0EdMwpTOKORrhnPFm20gMuclz_6lueVpiGMx052eRTJj4C2GbbxybaSvRkEBEJFJaYgQHZxz3s3whO_xJa1F3HFJqZ7SVGlaUOSndr9cp6uM6BCuunThkjMo30zZr-8y7waIqrvflMm9rMDdxupQbM6x_zl8tvN8-q-mXWuH2dC4YY5u1cYOZJh');"></div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between mb-1">
+<h4 class="font-bold text-sm truncate">Sarah Chen <span class="text-gray-400 font-normal">· 2nd</span></h4>
+<span class="text-xs text-gray-400">12m ago</span>
+</div>
+<p class="text-xs text-primary font-bold mb-2 uppercase tracking-tight">High-Value Prospect</p>
+<p class="text-sm text-gray-600 dark:text-gray-300 line-clamp-2 mb-4">
+                                            "The future of AI in B2B SaaS isn't just automation—it's personalization at scale. We're seeing a massive shift in how teams..."
+                                        </p>
+<div class="flex items-center gap-2">
+<button class="bg-primary/10 text-primary px-4 py-2 rounded-lg text-xs font-bold flex items-center gap-2 hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-sm">bolt</span>
+                                                Quick Reply
+                                            </button>
+<button class="p-2 text-gray-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">more_horiz</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Feed Item 2 -->
+<div class="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 p-5 rounded-xl shadow-sm hover:border-primary/30 transition-colors">
+<div class="flex gap-4">
+<div class="size-12 rounded-lg bg-cover bg-center shrink-0" data-alt="Corporate headshot professional" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCPwzVJCtNQfNdJAN496HtBTeKr_sY1BsNHiANrOTLivU8He2qCL3eBtCSInv7qDXxArpnvtX17sgyje6XF7sRsAQVFRE229wJO12A7zPrm3wVACVsK463Lte3cT1ujwL54QCIro4ucAfV83n9DdCC1kCZ223OxJFLmjsbG1Qd5m2jhhh4cPjantE2zShBfDw9r8carLKs4srbzV4fhOSrZC_qTYkpEXZUBBl0Joi1lr8llem7SGhz_73WyKKCVm7AkJJTXqnzmjVhB');"></div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between mb-1">
+<h4 class="font-bold text-sm truncate">James Wilson <span class="text-gray-400 font-normal">· 1st</span></h4>
+<span class="text-xs text-gray-400">45m ago</span>
+</div>
+<p class="text-xs text-indigo-400 font-bold mb-2 uppercase tracking-tight">Industry Leader</p>
+<p class="text-sm text-gray-600 dark:text-gray-300 line-clamp-2 mb-4">
+                                            Just reached 50k followers! Here are the 5 things I wish I knew when I started my ghostwriting agency 3 years ago...
+                                        </p>
+<div class="flex items-center gap-2">
+<button class="bg-primary/10 text-primary px-4 py-2 rounded-lg text-xs font-bold flex items-center gap-2 hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-sm">bolt</span>
+                                                Quick Reply
+                                            </button>
+<button class="p-2 text-gray-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">more_horiz</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Feed Item 3 -->
+<div class="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 p-5 rounded-xl shadow-sm hover:border-primary/30 transition-colors">
+<div class="flex gap-4">
+<div class="size-12 rounded-lg bg-cover bg-center shrink-0" data-alt="Professional female executive portrait" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDSnwn_fAVhyB_sWgrbc8efx4lPD_jDPWU7Agbs1mKIaZeXesL8fpkaplQbS5jfECwhCd4b9vKa_Tc8iDyVC6rtRyewSYe3Hw8S9B9UJAcY3JVo91pt2_T12GYBAXQrU0cggv2rQ00_sudOZvH1sy9OWcfn6H5M1uUjyFbnNFsqX7gnYPn7zLIVmCYTfJQ-RVjHN1PdQlkASeNqVNhcRNVbfPjKC4yxjKNCcjYKyVSHS9U4pg_2OmFIEe4H6tmiwMF_n6n4fMScf_Ym');"></div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between mb-1">
+<h4 class="font-bold text-sm truncate">Elena Rodriguez <span class="text-gray-400 font-normal">· 1st</span></h4>
+<span class="text-xs text-gray-400">1h ago</span>
+</div>
+<p class="text-xs text-green-500 font-bold mb-2 uppercase tracking-tight">Strategic Connection</p>
+<p class="text-sm text-gray-600 dark:text-gray-300 line-clamp-2 mb-4">
+                                            Honored to be named Top Voice in Strategy! It's been a long journey of consistent value sharing and community...
+                                        </p>
+<div class="flex items-center gap-2">
+<button class="bg-primary/10 text-primary px-4 py-2 rounded-lg text-xs font-bold flex items-center gap-2 hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-sm">bolt</span>
+                                                Quick Reply
+                                            </button>
+<button class="p-2 text-gray-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">more_horiz</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Side Widgets -->
+<div class="space-y-6">
+<!-- Usage Credits Card -->
+<div class="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 p-6 rounded-xl shadow-sm flex flex-col items-center">
+<h3 class="text-sm font-bold text-gray-800 dark:text-white w-full mb-6">Usage Credits</h3>
+<div class="relative size-40 mb-4">
+<!-- Credit Ring SVG -->
+<svg class="size-full rotate-[-90deg]">
+<circle class="stroke-gray-100 dark:stroke-gray-800 fill-none" cx="80" cy="80" r="70" stroke-width="12"></circle>
+<circle class="stroke-primary fill-none" cx="80" cy="80" r="70" stroke-dasharray="440" stroke-dashoffset="132" stroke-linecap="round" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-3xl font-black text-[#0e0e1b] dark:text-white">72%</span>
+<span class="text-[10px] font-bold text-gray-400 uppercase">Remaining</span>
+</div>
+</div>
+<div class="w-full space-y-3">
+<div class="flex justify-between text-xs">
+<span class="text-gray-500 font-medium">AI Post Generations</span>
+<span class="font-bold">48/100</span>
+</div>
+<div class="flex justify-between text-xs">
+<span class="text-gray-500 font-medium">Auto-Replies used</span>
+<span class="font-bold">124/500</span>
+</div>
+<button class="w-full mt-4 border border-primary/20 text-primary py-2 rounded-lg text-xs font-bold hover:bg-primary/5 transition-colors">
+                                    Upgrade Plan
+                                </button>
+</div>
+</div>
+<!-- Engagement Health -->
+<div class="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 p-6 rounded-xl shadow-sm">
+<h3 class="text-sm font-bold text-gray-800 dark:text-white mb-4">Engagement Health</h3>
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<div class="size-2 rounded-full bg-green-500"></div>
+<div class="flex-1">
+<div class="flex justify-between items-center mb-1">
+<span class="text-xs font-bold">Reply Consistency</span>
+<span class="text-[10px] font-bold text-green-500">EXCELLENT</span>
+</div>
+<div class="w-full bg-gray-100 dark:bg-gray-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-green-500 h-full w-[90%]"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="size-2 rounded-full bg-amber-400"></div>
+<div class="flex-1">
+<div class="flex justify-between items-center mb-1">
+<span class="text-xs font-bold">New Prospect Outreach</span>
+<span class="text-[10px] font-bold text-amber-500">STABLE</span>
+</div>
+<div class="w-full bg-gray-100 dark:bg-gray-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-amber-400 h-full w-[65%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Daily Tip -->
+<div class="bg-primary/5 border border-primary/10 p-5 rounded-xl">
+<div class="flex gap-3 mb-2">
+<span class="material-symbols-outlined text-primary">lightbulb</span>
+<h4 class="text-sm font-bold text-primary">Growth Tip</h4>
+</div>
+<p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed italic">
+                                "Posts shared between 8:00 AM and 10:00 AM EST on Tuesdays see a 24% higher engagement rate for your niche."
+                            </p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

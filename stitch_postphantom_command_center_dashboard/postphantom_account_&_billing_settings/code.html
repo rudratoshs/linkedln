@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PostPhantom Account &amp; Billing Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4848e5",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111121",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#0e0e1b] dark:text-white min-h-screen">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200 dark:border-gray-800 bg-white dark:bg-[#1a1a2e] px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<div class="size-8 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-tight">PostPhantom</h2>
+</div>
+<div class="flex flex-1 justify-end gap-4 items-center">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="flex items-center gap-3 pl-4 border-l border-gray-200 dark:border-gray-700">
+<div class="text-right hidden sm:block">
+<p class="text-sm font-bold">Alex Rivers</p>
+<p class="text-xs text-gray-500">Pro Member</p>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-gray-200 dark:border-gray-700" data-alt="Profile picture of a professional user" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAka98ZATLdPv_yCxYNjIRYH5zeIfwvplpEppYAq7mKMe16mobaqov_D71A_ZW_K-4yZDbR-j5q6aIfQ7oThVJmdUraBV7QxkV08XLsWgOpyf-kegc-5DcGI9Cg9BBGToVCuHxzYaD2oq6yf5_djLwoMADVDAQe4VXN4nRFPizCTgoj3a5KzcBQIdNp4acEkzjcIwmdt7j9uAPeIwE6p_-E9a1Bno57pSQ9xts_vWsRRjZLKtwkSirLBlMZbrQEyQhP84FkzhiBJpno");'></div>
+</div>
+</div>
+</header>
+<div class="flex flex-1 justify-center">
+<div class="flex w-full max-w-[1280px]">
+<!-- Side Navigation Bar -->
+<aside class="w-64 border-r border-gray-200 dark:border-gray-800 bg-white dark:bg-[#1a1a2e] hidden md:flex flex-col p-6 sticky top-[65px] h-[calc(100vh-65px)]">
+<div class="flex flex-col gap-1 mb-8">
+<h1 class="text-lg font-bold">Settings</h1>
+<p class="text-gray-500 dark:text-gray-400 text-xs">Manage your platform preferences</p>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-sm font-medium">Profile</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary/10 text-primary border border-primary/20" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">payments</span>
+<span class="text-sm font-semibold">Subscription &amp; Billing</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined">integration_instructions</span>
+<span class="text-sm font-medium">API &amp; Integration</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined">shield</span>
+<span class="text-sm font-medium">Security</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-gray-100 dark:border-gray-800">
+<div class="bg-primary/5 rounded-xl p-4">
+<p class="text-xs font-bold text-primary mb-1">Support</p>
+<p class="text-xs text-gray-500 mb-3">Need help with your plan?</p>
+<button class="w-full py-2 text-xs font-bold bg-primary text-white rounded-lg">Contact Us</button>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 p-8 overflow-y-auto">
+<!-- Page Heading -->
+<div class="mb-8">
+<h1 class="text-3xl font-black tracking-tight mb-2">Subscription &amp; Billing</h1>
+<p class="text-gray-500 dark:text-gray-400">Manage your subscription plan, track usage, and view payment history.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Left Column: Plan & Billing Details -->
+<div class="lg:col-span-2 space-y-6">
+<!-- Subscription Card -->
+<div class="bg-white dark:bg-[#1a1a2e] rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden shadow-sm">
+<div class="p-6">
+<div class="flex justify-between items-start mb-6">
+<div>
+<div class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 mb-2">
+                                                Active
+                                            </div>
+<h3 class="text-xl font-bold">Pro Plan</h3>
+<p class="text-gray-500 text-sm">$49.00 / month • Next billing Oct 12, 2024</p>
+</div>
+<button class="px-4 py-2 bg-primary text-white text-sm font-bold rounded-lg hover:bg-primary/90 transition-colors">
+                                            Manage Subscription
+                                        </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="p-4 rounded-lg bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-800">
+<p class="text-xs font-medium text-gray-500 uppercase tracking-wider mb-1">Billing Interval</p>
+<p class="text-sm font-semibold">Monthly</p>
+</div>
+<div class="p-4 rounded-lg bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-800">
+<p class="text-xs font-medium text-gray-500 uppercase tracking-wider mb-1">Payment Method</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">credit_card</span>
+<p class="text-sm font-semibold">Visa ending in •••• 4242</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Payment Method Section -->
+<div class="bg-white dark:bg-[#1a1a2e] rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden shadow-sm">
+<div class="p-6 border-b border-gray-100 dark:border-gray-800 flex justify-between items-center">
+<h3 class="text-lg font-bold">Payment Methods</h3>
+<button class="text-primary text-sm font-bold hover:underline">+ Add New</button>
+</div>
+<div class="p-6">
+<div class="flex items-center justify-between p-4 border border-primary/30 rounded-lg bg-primary/5">
+<div class="flex items-center gap-4">
+<div class="w-12 h-8 bg-gray-200 dark:bg-gray-700 rounded flex items-center justify-center font-bold italic text-blue-800">VISA</div>
+<div>
+<p class="text-sm font-bold">Visa ending in 4242</p>
+<p class="text-xs text-gray-500">Expires 12/26 • Default</p>
+</div>
+</div>
+<button class="text-gray-400 hover:text-gray-600">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="mt-4 flex items-center gap-2 text-xs text-gray-500">
+<span class="material-symbols-outlined text-xs">lock</span>
+                                        Payments are processed securely via Stripe.
+                                    </div>
+</div>
+</div>
+<!-- Billing History -->
+<div class="bg-white dark:bg-[#1a1a2e] rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden shadow-sm">
+<div class="p-6 border-b border-gray-100 dark:border-gray-800">
+<h3 class="text-lg font-bold">Billing History</h3>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="text-xs text-gray-500 uppercase tracking-wider bg-gray-50 dark:bg-gray-800/30">
+<th class="px-6 py-3 font-medium">Invoice</th>
+<th class="px-6 py-3 font-medium">Status</th>
+<th class="px-6 py-3 font-medium">Amount</th>
+<th class="px-6 py-3 font-medium text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+<tr>
+<td class="px-6 py-4 text-sm">Sep 12, 2023</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">Paid</span>
+</td>
+<td class="px-6 py-4 text-sm font-medium">$49.00</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:text-primary/70 transition-colors">
+<span class="material-symbols-outlined text-lg">download</span>
+</button>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-4 text-sm">Aug 12, 2023</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">Paid</span>
+</td>
+<td class="px-6 py-4 text-sm font-medium">$49.00</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:text-primary/70 transition-colors">
+<span class="material-symbols-outlined text-lg">download</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Right Column: Usage Limits & Stats -->
+<div class="space-y-6">
+<div class="bg-white dark:bg-[#1a1a2e] rounded-xl border border-gray-200 dark:border-gray-800 p-6 shadow-sm">
+<h3 class="text-lg font-bold mb-6">Usage limits</h3>
+<div class="space-y-6">
+<!-- Usage Item 1 -->
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="text-sm font-semibold">LinkedIn Posts</span>
+<span class="text-sm font-bold">12 <span class="text-gray-400 font-normal">/ 30</span></span>
+</div>
+<div class="w-full bg-gray-100 dark:bg-gray-800 rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 40%"></div>
+</div>
+<p class="text-[10px] text-gray-400 mt-2">Resets in 14 days</p>
+</div>
+<!-- Usage Item 2 -->
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="text-sm font-semibold">AI Tokens</span>
+<span class="text-sm font-bold">80% <span class="text-gray-400 font-normal">left</span></span>
+</div>
+<div class="w-full bg-gray-100 dark:bg-gray-800 rounded-full h-2">
+<div class="bg-green-500 h-2 rounded-full" style="width: 80%"></div>
+</div>
+</div>
+<!-- Usage Item 3 -->
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="text-sm font-semibold">Strategy Reports</span>
+<span class="text-sm font-bold">3 <span class="text-gray-400 font-normal">/ 5</span></span>
+</div>
+<div class="w-full bg-gray-100 dark:bg-gray-800 rounded-full h-2">
+<div class="bg-yellow-500 h-2 rounded-full" style="width: 60%"></div>
+</div>
+</div>
+</div>
+<div class="mt-8 p-4 bg-primary/5 rounded-lg border border-primary/10">
+<p class="text-xs text-gray-600 dark:text-gray-400 mb-3 leading-relaxed">Need more? Upgrade to our Agency plan for unlimited posts and tokens.</p>
+<button class="text-primary text-xs font-bold flex items-center gap-1">
+                                        Compare all plans <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Help / CTA Section -->
+<div class="bg-primary rounded-xl p-6 text-white overflow-hidden relative">
+<div class="relative z-10">
+<h4 class="font-bold mb-2">Refer a friend</h4>
+<p class="text-sm text-white/80 mb-4">Get 20% off your next month for every user you invite.</p>
+<button class="bg-white text-primary px-4 py-2 rounded-lg text-xs font-bold">Get Link</button>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-20">
+<span class="material-symbols-outlined text-8xl">card_giftcard</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Danger Zone Section -->
+<div class="mt-12">
+<div class="border border-red-200 dark:border-red-900/30 rounded-xl bg-red-50/30 dark:bg-red-900/10 overflow-hidden">
+<div class="p-6 border-b border-red-100 dark:border-red-900/20">
+<h3 class="text-lg font-bold text-red-600 dark:text-red-400">Danger Zone</h3>
+</div>
+<div class="p-6 flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div>
+<p class="text-sm font-bold text-[#0e0e1b] dark:text-white mb-1">Delete Account</p>
+<p class="text-sm text-gray-500 dark:text-gray-400">Permanently delete your account and all associated data. This action cannot be undone.</p>
+</div>
+<button class="px-6 py-2 border-2 border-red-500 text-red-600 hover:bg-red-500 hover:text-white transition-all text-sm font-bold rounded-lg whitespace-nowrap">
+                                    Delete Account
+                                </button>
+</div>
+</div>
+</div>
+<!-- Footer padding -->
+<div class="h-20"></div>
+</main>
+</div>
+</div>
+</div>
+<!-- Double Confirmation Modal (Overlay state simulated via hidden class, displayed for preview logic) -->
+<!-- Remove 'hidden' to see it in action -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 hidden">
+<div class="bg-white dark:bg-[#1a1a2e] w-full max-w-md rounded-xl shadow-2xl border border-gray-200 dark:border-gray-800 overflow-hidden">
+<div class="p-6">
+<div class="w-12 h-12 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center text-red-600 mb-4">
+<span class="material-symbols-outlined">warning</span>
+</div>
+<h3 class="text-xl font-bold mb-2">Are you absolutely sure?</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400 mb-6 leading-relaxed">
+                    This will immediately cancel your subscription and permanently delete all your posts, strategy data, and account information.
+                </p>
+<div class="space-y-4">
+<div class="flex flex-col gap-2">
+<label class="text-xs font-bold text-gray-400 uppercase">To confirm, type <span class="text-red-500">DELETE</span> below</label>
+<input class="w-full bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 rounded-lg p-3 text-sm focus:ring-red-500 focus:border-red-500" placeholder="Type DELETE" type="text"/>
+</div>
+<div class="flex gap-3 pt-2">
+<button class="flex-1 px-4 py-3 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 font-bold rounded-lg text-sm hover:bg-gray-200 transition-colors">Cancel</button>
+<button class="flex-1 px-4 py-3 bg-red-600 text-white font-bold rounded-lg text-sm hover:bg-red-700 transition-colors">Yes, Delete Account</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>
