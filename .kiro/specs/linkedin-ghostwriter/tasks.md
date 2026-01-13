@@ -263,7 +263,26 @@ This implementation plan converts the PostPhantom design into a series of increm
     - Ensure consistent visual design with LinkedIn
     - _Requirements: 4.4, 10.1_
 
-- [x] 14. Final checkpoint - Ensure all tests pass
+- [-] 14. Implement Web Dashboard
+  - [x] 14.1 Set up Web Application Structure
+    - Create `packages/web` using Vite + React + Tailwind (consistent with extension)
+    - Configure `pnpm-workspace.yaml` to include the new package
+    - Set up Supabase Auth (Login/Signup) reusing `@postphantom/shared` auth logic
+    - _Requirements: Shared Auth, Monorepo Structure_
+
+  - [-] 14.2 Implement Dashboard Core Features
+    - Create "Voice Vault" page for managing Personas (CRUD operations)
+    - Create "History" page to view `request_logs` (read-only analytics)
+    - Create "Settings" page for `user_preferences` (syncs with extension)
+    - _Requirements: 8.1, 8.3_
+
+  - [ ] 14.3 Implement Billing & Subscription UI
+    - Create Pricing page
+    - Integrate Stripe Customer Portal (or mock for now)
+    - Connect to `subscription_plans` table
+    - _Requirements: Domain F (Billing Guards)_
+
+- [ ] 15. Final checkpoint - Ensure all tests pass
   - Ensure all tests pass, ask the user if questions arise.
 
 ## Notes
